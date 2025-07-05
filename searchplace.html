@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Place</title>
+    <link rel="stylesheet" href="style_1.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topmenu">
+            <div class="home"><a href="home.html#homecoming" class="navlinkhome">Home</a></div>
+            <div class="services"><a href="home.html#servicecoming" class="navlinkserv">Services</a></div>
+            <div class="aboutus"><a href="home.html#aboutuscoming" class="navlinkabt">About Us</a></div>
+            <div class="contact"><a href="home.html#contactuscoming" class="navlinkcont">Contact</a></div>
+        </div>
+    </div>
+    <div class="bgimg">
+        <img src="images/anime-style-clouds.jpg">
+    </div>
+
+    <form id="searchbar">
+        <input id="srch" type="text" placeholder="Search Places" autocomplete="off">
+    </form>
+    <button id="wrong" onclick="removesearch()">X</button>
+    <div id="searchresult"></div>
+    <p id="infoclick">Click the images below to get further info about the location</p>
+    <button id="showmore">Explore More</button>
+</body>
+</html>
+
+<script>
+    const searchform=document.getElementById("searchbar");
+    const wrongbutton=document.getElementById("wrong");
+    const searchresult=document.getElementById("searchresult");
+    const searchbox=document.getElementById("srch");
+    const accessid="TJh0D54pL8JDzUsGmWkniguzV4R_yADnVCtUfVMOBXk";
+    const showmorebtn=document.getElementById("showmore");
+
+    let keyword='';
+    let page=1;
+
+    async function searchimage() {
+        const searchbox=document.getElementById("srch");
+        keyword=searchbox.value;
+        const url=`https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${accessid}&per_page=15`;
+        const response=await fetch(url);
+        const data=await response.json();
+
+        if(page===1){
+            searchresult.innerHTML="";
+        }
+
+        if(searchbox.value===''){
+            searchresult.innerHTML="";
+            showmorebtn.style.display="none";
+        }
+        const results=data.results;
+        results.map((result)=>{
+            const image=document.createElement("img");
+            image.src=result.urls.small;
+            const imglink=document.createElement("a");
+            imglink.href=result.links.html;
+            imglink.target="_blank";
+
+            imglink.appendChild(image);
+            searchresult.appendChild(imglink);
+        });
+        showmorebtn.style.display="block";
+    }
+
+    showmorebtn.addEventListener("click",function(event){
+        page++;
+        searchimage();
+    });
+    
+    searchform.addEventListener("submit",(e) =>{
+        e.preventDefault();
+        page=1;
+        searchimage();
+    });
+
+    function removesearch(){
+        searchbox.value='';
+    }
+
+    
+</script>

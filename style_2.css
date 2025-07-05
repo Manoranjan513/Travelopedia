@@ -1,0 +1,506 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: aliceblue;
+    display:flex;
+    z-index:-1;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.topbar{
+    padding-left: 20px;
+    background: black;
+    display:flex;
+    height:50px;
+    border-style:double;
+    border-color: gray;
+    width: 98.15%;
+    position: fixed;
+    z-index: 2;
+}
+.popup{
+    width:35px;
+    position: absolute;
+    top:10px;
+}
+.popup-overlay{
+    background-color: black;
+    opacity: 0.7;
+    position:fixed;
+    width:20%;
+    height:100%;
+    top:0%;
+    left:0%;
+    z-index:3;
+    display: none;
+}
+.popup-content{
+    color:white;
+    display: inline-flex;
+    flex-direction: column;
+    padding:20px;
+    z-index: 4;
+    text-decoration: none;
+    font-style: normal;
+    cursor: pointer;
+    display: none;
+    position: fixed;
+}
+.close{
+    margin-left: 220px;
+    font-size: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
+    border-color: white;
+    border-radius: 99%;
+    border-width: 6px;
+}
+.popup-content i{
+    margin-top: 25px;
+    font-style: normal;
+    font-size: 20px;
+}
+
+@keyframes slidein{
+    from{
+        margin-left: -20%;
+    }
+    to{
+        margin-left:0%;
+    }
+}
+@keyframes slideout{
+    to{
+        margin-left:-20%;
+    }
+}
+
+.slide-right{
+    animation: slidein 0.90s ease forwards;
+}
+.slide-left{
+    animation: slideout 0.90s ease forwards;
+    display: none;
+}
+
+.one{
+    margin-bottom: 2px;
+    background-color: whitesmoke;
+    color:whitesmoke;
+    font-size: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 10px;
+}
+
+.two{
+    margin-bottom: 2px;
+    background-color: whitesmoke;
+    color:whitesmoke;
+    font-size: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+}
+
+.three{
+    margin-bottom: 2px;
+    background-color: whitesmoke;
+    color:whitesmoke;
+    font-size: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+}
+.header{
+    background: #142d4a;
+    width:650px;
+    height:150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    top:300px;
+    left:360px;
+    aspect-ratio: 1/1;
+}
+.Title{
+    position:relative;
+    font-size: 100px;
+    font-family:fantasy;
+    text-align:center;
+    color:whitesmoke;
+    -webkit-text-stroke: 2px black;
+}
+.quote{
+    font-size: larger;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    position: relative;
+    color:darkorange;
+    font-weight:bolder;
+}
+
+.bgimg{
+    display: flex;
+    background-size: cover;
+    height: 100vw;
+    width:100vw;
+    position: fixed;
+    opacity:45%;
+    z-index:-2;
+}
+
+.topmenu{
+    font-size: 20px;
+    display: flex;
+    width: 100%;
+    margin-left: 400px;
+    margin-right: 50px;
+    gap:120px;
+    justify-content: space-between;
+    align-items: center;
+}
+.navlinkhome{
+    color: white;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+}
+.navlinkserv{
+    color: white;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 1px;
+}
+.navlinkabt{
+    color: white;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 2px; 
+}
+.navlinkcont{
+    color: white;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    
+}
+.navlinkhome:hover{
+    background-color: rgb(62, 48, 253);
+    cursor:default;
+    border-radius: 50px;
+    height: 30px;
+    width:75px;
+}
+.navlinkserv:hover{
+    background-color: rgb(62, 48, 253);
+    cursor:default;
+    border-radius: 50px;
+    height: 30px;
+    width:75px;
+}
+.navlinkabt:hover{
+    background-color: rgb(62, 48, 253);
+    cursor:default;
+    border-radius: 50px;
+    height: 30px;
+    width:75px;
+}
+.navlinkcont:hover{
+    background-color: rgb(62, 48, 253);
+    cursor:default;
+    border-radius: 50px;
+    height: 30px;
+    width:75px;
+}
+@property --deg{
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 0deg;
+}
+.header::before,
+.header::after
+{
+    content: "";
+    position: absolute;
+    bottom:-1px;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    z-index:-2;
+    margin-top: 30px;
+    padding: 2px;
+    background: conic-gradient(from var(--deg) at 50% 50%, #00c3ff, #4d0199, #6300c6, #009dcd);   
+    animation: autoRotate 5s linear infinite;
+}
+.header::after{
+    filter: blur(10px);
+}
+
+@keyframes autoRotate{
+    to{
+        --deg: 360deg;
+    }
+}
+.servicetab{
+    display:flexbox;
+    flex-direction: column;
+    position: absolute;
+    top: 700px;
+}
+.st{
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: underline black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 20px;
+    color: black;
+    -webkit-text-stroke:0.25px blue;
+    margin-bottom: 30px;
+}
+.imagekeep1{
+    position:static;
+    margin-left: 390px;
+    margin-top: 30px;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;   
+    display: inline-block;
+    width: 200px;
+}
+.imagekeep2{
+    position:static;
+    margin-left: 170px;
+    margin-top: 30px;
+    border-color: black;
+    border-width: 3px;
+    padding-bottom: 0px;
+    border-style: solid;   
+    display: inline-block;
+    width: 200px;
+}
+.line1{
+    position:absolute;
+    top:660px;
+    margin:20px 0;
+    background-color: gray;
+    height: 2px;
+    width:100%;
+}
+#img1btn{
+    position: absolute;
+    margin-top: 10px;
+    background-color: yellow;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#6300c6;
+    -webkit-text-stroke: red 0.25px;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 15px;
+    top: 310px;
+    left:405px;
+    font-size: larger;
+    transition: transform 0.1s ease;
+}
+#img1btn:active{
+    transform: scale(0.9);
+}
+#img2btn{
+    position: absolute;
+    margin-top: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#6300c6;
+    background-color: yellow;
+    -webkit-text-stroke: red 0.25px;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 15px;
+    top: 310px;
+    left: 800px;
+    font-size: larger;
+    transition: transform 0.1s ease;
+}
+#img2btn:active{
+    transform: scale(0.9);
+}
+.line2{
+    position:absolute;
+    margin:20px 0;
+    margin-top: 40px;
+    top:1080px;
+    background-color: gray;
+    height: 2px;
+    width:100%;
+}
+.aboutustab{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position:absolute;
+    top:1150px;
+}
+.abtus{
+    font-size: 23.5px;
+    font-weight: bold;
+    text-decoration: underline black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 20px;
+    color: black;
+    -webkit-text-stroke:0.25px blue;
+    margin-bottom: 10px;
+}
+.line3{
+    position:absolute;
+    margin:20px 0;
+    margin-top: 40px;
+    top:1690px;
+    background-color: gray;
+    height: 2px;
+    width:100%;
+}
+.contactustab{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position:absolute;
+    top:1760px;
+}
+.ctct{
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: underline black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 20px;
+    color: black;
+    -webkit-text-stroke:0.25px blue;
+    margin-bottom: 10px;
+}
+
+.contactdetails{
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+    margin-left: 20px;
+}
+.phone{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap:18px;
+    
+}
+.bxs-phone{
+    margin-top: 17px;
+    margin-left: 20px;
+    font-size: 26px;
+}
+.email{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap:18px;
+    
+}
+.bxs-envelope-open{
+    margin-top: 17px;
+    margin-left: 20px;
+    font-size: 28px;
+}
+.telegram{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap:18px;
+    
+}
+.bxs-paper-plane{
+    margin-top: 17px;
+    margin-left: 20px;
+    font-size: 28px;
+}
+.phone,.email,.telegram{
+    margin:0;
+}
+.phone p,.phone i{
+    margin:0;
+}
+.email p,.email i{
+    margin:0;
+}
+.telegram p,.telegram i{
+    margin: 0;
+}
+#queries{
+    margin-left: 550px;
+    margin-top: 75px;
+}
+.queryform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 240px;
+}
+.queryform input{
+    background: transparent;
+    border-style: solid;
+    border-width: 2px;
+    width:100%;
+    padding:5px;
+    margin:5px;
+    margin-left: 260px;
+    font-size: 20px;
+}
+.queryform textarea{
+    background: transparent;
+    border-style: solid;
+    border-width: 2px;
+    width:100%;
+    padding:5px;
+    margin:5px;
+    margin-left: 260px;
+    font-size: 20px;
+    height: 110px;
+}
+#add-query{
+    background-color: whitesmoke;
+    color:black;
+    font-family: "Poppins", sans-serif;
+    padding-left: 25px;
+    padding-top:10px;
+    padding-right: 25px;
+    padding-bottom:10px;
+    border:none;
+    border-radius: 25px;
+    box-shadow:  -5px -5px 15px white, 8px 8px 15px gray;
+    font-size: 15px;
+    margin-top:10px;
+    margin-left:280px;
+    cursor:pointer;
+    transition: 0.05s ease;
+}
+#add-query:active{
+    box-shadow: inset 8px 8px 15px lightgrey, -8px -8px 15px white;
+}

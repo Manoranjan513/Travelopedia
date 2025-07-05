@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Planner</title>
+  <link rel="stylesheet" href="style_3.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topmenu">
+      <div class="home"><a href="home.html#homecoming" class="navlinkhome">Home</a></div>
+      <div class="services"><a href="home.html#servicecoming" class="navlinkserv">Services</a></div>
+      <div class="aboutus"><a href="home.html#aboutuscoming" class="navlinkabt">About Us</a></div>
+      <div class="contact"><a href="home.html#contactuscoming" class="navlinkcont">Contact</a></div>
+    </div>
+  </div>
+
+  <div class="bgimg">
+    <img src="images/sunclouds.jpg">
+  </div>
+
+  <i class='bx  bxs-bell-ring'  style='color:#000000'></i> 
+  <p id="paranotify">You'll get notified at the specified date & time</p>
+  <div class="container">
+    <div class="travel-cont">
+      <div>Place: Madurai</div>
+      <div>Location: Meenakshi Amman Temple</div>
+      <div>Date: 24/11/2025</div>
+      <div>Time: 09:00 AM</div>
+      <button class="deletebutton" onclick="deletecont(event)">Delete</button>
+      <button class="finishbutton" onclick="finishcont(event)">Finish</button>
+    </div>
+  </div>
+
+  <button id="popup-button">+</button>
+
+  <div class="popup-overlay"></div>
+
+  <div class="popup-box">
+    <form onsubmit="return false;">
+      <input type="text" placeholder="Place" id="place" />
+      <input type="text" placeholder="Location" id="locationfix" />
+      <input type="date" id="datefix" />
+      <input type="time" id="timefix" />
+      <button id="add-plan" type="button">ADD</button>
+      <button id="cancel-plan" type="button">CANCEL</button>
+    </form>
+  </div>
+</body>
+</html>
+
+<script>
+var popupoverlay = document.querySelector(".popup-overlay");
+var popupbox = document.querySelector(".popup-box");
+var popupbutton = document.getElementById("popup-button");
+var finishbutton=document.querySelector(".finishbutton");
+
+popupbutton.addEventListener("click", function(event) {
+    event.preventDefault();
+    popupoverlay.style.display = "block";
+    popupbox.style.display = "block";
+});
+
+function getRandomColor() {
+    const letters='0123456789ABCDEF';
+    let color='#';
+    for(let i=0;i<6;i++){
+        color+=letters[Math.floor(Math.random()*16)];
+    }
+    return color;
+}
+
+var cancelplanbutton = document.getElementById("cancel-plan");
+var addplanbutton = document.getElementById("add-plan");
+
+cancelplanbutton.addEventListener("click", function (event) {
+    event.preventDefault();
+    popupbox.style.display = "none";
+    popupoverlay.style.display = "none";
+
+    document.getElementById("place").value='';
+    document.getElementById("locationfix").value='';
+    document.getElementById("datefix").value='';
+    document.getElementById("timefix").value='';
+});
+
+const container = document.querySelector(".container");
+const place = document.getElementById("place");
+const locationfix = document.getElementById("locationfix");
+const datefix = document.getElementById("datefix");
+const timefix = document.getElementById("timefix");
+
+addplanbutton.addEventListener("click", function(event) {
+    event.preventDefault();  
+    const travelplan = document.createElement("div");
+    travelplan.setAttribute("class","travel-cont");
+    travelplan.innerHTML = `<div>Place: ${place.value}</div>
+    <div>Location: ${locationfix.value}</div>
+    <div>Date: ${datefix.value}</div>
+    <div>Time: ${timefix.value}</div>
+    <button class="deletebutton" onclick="deletecont(event)">Delete</button>
+    <button class="finishbutton" onclick="finishcont(event)">Finish</button>`;
+    container.append(travelplan);
+    travelplan.style.display = "inline-block";
+    travelplan.style.backgroundColor=getRandomColor();
+    popupbox.style.display = "none";
+    popupoverlay.style.display = "none";
+    document.getElementById("place").value='';
+    document.getElementById("locationfix").value='';
+    document.getElementById("datefix").value='';
+    document.getElementById("timefix").value='';
+});
+
+function deletecont(event){
+    event.target.parentElement.remove();
+}
+function finishcont(event){
+    event.target.style.backgroundColor="rgb(145, 241, 1)";
+}
+</script>
